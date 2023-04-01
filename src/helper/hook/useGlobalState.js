@@ -35,14 +35,6 @@ function Reducer(state, action) {
     }
   }
 }
-// const Provider = ({ children }) => {
-//   let user = {
-//     nama: "edoi",
-//   };
-//   return <Context.Provider value={user}>{children}</Context.Provider>;
-// };
-
-// export { Context, Provider };
 
 export default function Provider(props) {
   const [state, dispatch] = useReducer(Reducer, initialState);
