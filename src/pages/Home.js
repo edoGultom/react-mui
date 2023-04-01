@@ -4,14 +4,14 @@ import React, { useEffect, useState } from "react";
 import Hero from "../components/Hero/Hero";
 import Kelas from "../components/Kelas/Kelas";
 import Layout from "../components/Layout/Layout";
+// import { Context } from "../helper/hook/useGlobalContext_standart";
 
 export default function Home() {
   const [dataProducts, setDataProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const user = useContext(Context);
 
   const getData = async () => {
     try {
-      setLoading(true);
       const response = await axios.get("https://dummyjson.com/products");
       setDataProducts(response.data.products);
     } catch (error) {
@@ -25,6 +25,7 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* <p>User adalah {user.nama} </p> */}
       <Hero />
       <Divider orientation="horizontal" flexItem />
       <Kelas data={dataProducts} color="blue" />

@@ -5,6 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
   AppBar,
+  Badge,
   Box,
   Divider,
   Drawer,
@@ -14,39 +15,46 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../helper/hook/useGlobalContext";
 import "../../styles/HeaderStyles.css";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  // handle
+  // get global State
+  const { state } = useGlobalContext();
+  console.log(state.cart, "statee");
   const handleTogle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
     <Box onClick={handleTogle} sx={{ textAlign: "center" }}>
-      <Typography
-        color={"darkmagenta"}
-        variant="h6"
-        component="div"
-        sx={{
-          flexGrow: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <AppleIcon />
-        MUSIC
-      </Typography>
+      <Link to={"/"}>
+        <Typography
+          color={"darkmagenta"}
+          variant="h6"
+          component="div"
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <AppleIcon />
+          MUSIC
+        </Typography>
+      </Link>
       <Divider />
       {/* list menu */}
       <ul className="mobile-menu">
         <li>
-          <Link to={"/"}>
-            <ShoppingCartIcon />
-          </Link>
+          {/* <Link to={"/"}>
+            {state.cart.id}
+          </Link> */}
+          <Badge badgeContent={Object.keys(state.cart).length} color="primary">
+            <ShoppingCartIcon color="action" />
+          </Badge>
         </li>
         <li>
           <Link to={"/about"}>Kelasku</Link>
@@ -85,8 +93,10 @@ export default function Header() {
                 alignItems: "center",
               }}
             >
-              <AppleIcon />
-              MUSIC
+              <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+                <AppleIcon />
+                MUSIC
+              </Link>
             </Typography>
 
             {/* list menu */}
@@ -94,7 +104,13 @@ export default function Header() {
               <ul className="navigation-menu">
                 <li>
                   <Link to={"/"}>
-                    <ShoppingCartIcon />
+                    {/* <ShoppingCartIcon /> */}
+                    <Badge
+                      badgeContent={Object.keys(state.cart).length}
+                      color="primary"
+                    >
+                      <ShoppingCartIcon />
+                    </Badge>
                   </Link>
                 </li>
                 <li>
