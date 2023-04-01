@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useReducer } from "react";
 
 const Context = createContext();
+
 const initialState = {
   cart: {},
 };
-
+// 1
 export function useGlobalContext() {
   const [state, dispatch] = useContext(Context);
   if (!state || !dispatch) {
@@ -12,6 +13,7 @@ export function useGlobalContext() {
   }
   return { state, dispatch };
 }
+// 2
 function Reducer(state, action) {
   switch (action.type) {
     case "ADD_CART":
@@ -26,17 +28,22 @@ function Reducer(state, action) {
               [action.item.id]: action.item,
             },
       };
-    case "RESET_CART":
-      return {
-        ...state,
-        cart: initialState.cart,
-      };
+      break;
+
     default: {
       throw new Error(`Unhandled action type ${action.type}`);
     }
   }
 }
-//harus buat provider nya
+// const Provider = ({ children }) => {
+//   let user = {
+//     nama: "edoi",
+//   };
+//   return <Context.Provider value={user}>{children}</Context.Provider>;
+// };
+
+// export { Context, Provider };
+
 export default function Provider(props) {
   const [state, dispatch] = useReducer(Reducer, initialState);
   return <Context.Provider value={[state, dispatch]} {...props} />;

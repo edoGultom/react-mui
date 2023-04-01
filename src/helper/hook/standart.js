@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer } from "react";
 
 const Context = createContext();
-//harus buat provider nya
+
 const Provider = ({ children }) => {
   let user = {
     nama: "edoi",

@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../../helper/hook/useGlobalContext";
+import { useGlobalContext } from "../../helper/hook/useGlobalState";
 import "../../styles/HeaderStyles.css";
 
 export default function Header() {
@@ -49,12 +49,14 @@ export default function Header() {
       {/* list menu */}
       <ul className="mobile-menu">
         <li>
-          {/* <Link to={"/"}>
-            {state.cart.id}
-          </Link> */}
-          <Badge badgeContent={Object.keys(state.cart).length} color="primary">
-            <ShoppingCartIcon color="action" />
-          </Badge>
+          <Link to={"/cart"}>
+            <Badge
+              badgeContent={Object.keys(state.cart).length}
+              color="primary"
+            >
+              <ShoppingCartIcon />
+            </Badge>
+          </Link>
         </li>
         <li>
           <Link to={"/about"}>Kelasku</Link>
@@ -103,8 +105,7 @@ export default function Header() {
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <ul className="navigation-menu">
                 <li>
-                  <Link to={"/"}>
-                    {/* <ShoppingCartIcon /> */}
+                  <Link to={"/cart"}>
                     <Badge
                       badgeContent={Object.keys(state.cart).length}
                       color="primary"

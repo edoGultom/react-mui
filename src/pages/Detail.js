@@ -6,11 +6,11 @@ import Layout from "../components/Layout/Layout";
 import Select from "../components/Select/Select";
 import "../helper/format/currency";
 import "../helper/format/thousand";
-import { useGlobalContext } from "../helper/hook/useGlobalContext";
+import { useGlobalContext } from "../helper/hook/useGlobalState";
 
 export default function Detail() {
   const { detailId } = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [images, setImages] = useState([]);
   const [jadwal, setJadwal] = useState("");
 

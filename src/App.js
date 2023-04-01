@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Community from "./pages/Community";
-import Provider from "./helper/hook/useGlobalContext";
+import Provider from "./helper/hook/useGlobalState";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} sdsdsd />
     </Provider>
   );
 }

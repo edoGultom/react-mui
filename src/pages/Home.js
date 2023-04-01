@@ -4,11 +4,9 @@ import React, { useEffect, useState } from "react";
 import Hero from "../components/Hero/Hero";
 import Kelas from "../components/Kelas/Kelas";
 import Layout from "../components/Layout/Layout";
-// import { Context } from "../helper/hook/useGlobalContext_standart";
 
 export default function Home() {
   const [dataProducts, setDataProducts] = useState([]);
-  // const user = useContext(Context);
 
   const getData = async () => {
     try {
