@@ -22,7 +22,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   // get global State
   const { state } = useGlobalContext();
-  console.log(state.cart, "statee");
+
   const handleTogle = () => {
     setMobileOpen(!mobileOpen);
   };
